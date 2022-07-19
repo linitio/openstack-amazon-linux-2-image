@@ -33,16 +33,20 @@ jobs:
           sudo apt-get update
           sudo apt install libguestfs-tools binfmt-support coreutils cryptsetup-bin e2fsprogs lvm2 mount parted qemu-user-static qemu-utils wget lsb-release
       # Runs a set of commands using the runners shell
-      - name: Test build
+      - name: Download base image from AWS
         run: |
          sudo wget https://cdn.amazonlinux.com/os-images/${{ env.VERSION }}/kvm/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+      - name: Making some changes on base image
+        run: |
          qemu-img convert -f qcow2 -O raw amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 amzn2-kvm.raw
          sudo mount -o loop,offset=2097152 amzn2-kvm.raw /mnt
          sudo cp config/cloud.cfg /mnt/etc/cloud/cloud.cfg
          sudo umount /mnt
          sudo rm amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          sudo qemu-img convert -f raw -O qcow2 amzn2-kvm.raw amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
-         sudo virt-sparsify --convert qcow2 --compress amzn2-kvm.qcow2 Amzn2-kvm-2.0.20190612-x86_64.xfs.gpt.qcow2
+      - name: Sparsify image
+        run: |
+         sudo virt-sparsify --convert qcow2 --compress amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
