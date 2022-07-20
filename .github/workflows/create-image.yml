@@ -43,10 +43,11 @@ jobs:
          sudo cp config/cloud.cfg /mnt/etc/cloud/cloud.cfg
          sudo umount /mnt
          sudo rm amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
-         sudo qemu-img convert -f raw -O qcow2 amzn2-kvm.raw amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         sudo qemu-img convert -f raw -O qcow2 amzn2-kvm.raw amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt-tmp.qcow2
       - name: Sparsify image
         run: |
-         sudo virt-sparsify --convert qcow2 --compress amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         sudo virt-sparsify --convert qcow2 --compress amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt-tmp.qcow2 amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+	 sudo rm amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt-tmp.qcow2
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
