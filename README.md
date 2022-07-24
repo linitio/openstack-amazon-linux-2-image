@@ -36,7 +36,7 @@
 <h3 align="center">Amazon Linux 2 image for OpenStack</h3>
 
   <p align="center">
-    project_description
+    Simple port of Amazon Linux 2 AMI for OpenStack environements
     <br />
     <a href="https://github.com/linitio/openstack-amazon-linux-2-image"><strong>Explore the docs »</strong></a>
     <br />
@@ -82,7 +82,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align="center"> 
+<a href="https://example.com"><img src="images/screenshot.png" alt="Product Name Screen Shot"></a>
+</p>
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
