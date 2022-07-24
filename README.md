@@ -33,7 +33,7 @@
     <img src="images/logo.png" alt="Logo" width="105" height="150">
   </a>
 
-<h3 align="center">Amazon Linux image for OpenStack</h3>
+<h3 align="center">Amazon Linux 2 image for OpenStack</h3>
 
   <p align="center">
     project_description
