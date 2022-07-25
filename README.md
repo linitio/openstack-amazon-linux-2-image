@@ -1,22 +1,6 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -40,8 +24,6 @@
     <a href="https://github.com/linitio/openstack-amazon-linux-2-image"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/linitio/openstack-amazon-linux-2-image">View Demo</a>
-    ·
     <a href="https://github.com/linitio/openstack-amazon-linux-2-image/issues">Report Bug</a>
     ·
     <a href="https://github.com/linitio/openstack-amazon-linux-2-image/issues">Request Feature</a>
@@ -81,30 +63,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p align="center"> 
-<a href="https://example.com"><img src="images/screenshot.png" alt="Product Name Screen Shot"></a>
-</p>
+This project is a simple port of Amazon Linux 2 AMI from Amazon Web Services  for OpenStack environments.  
+This image is strictly the same that the original, the only change has been made is adding OpenStack datasource for cloud-init.  
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This image is updated when AWS released a new version on their public repository [here](https://cdn.amazonlinux.com/os-images/latest/ "AWZ Images Repository").
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -112,58 +77,16 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### How to use this image
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Set your OpenStack environement variables
+2. Download the latest image from release page
+3. Upload image to your OpenStack environment
    ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   openstack image create --disk-format=qcow2 --container-format=bare --min-disk 25 --file amzn2-kvm-2.0.20220606.1-x86_64.xfs.gpt.qcow2  'Amazon Linux 2'
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/linitio/openstack-amazon-linux-2-image/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -186,7 +109,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GPL-2.0 License. See `LICENSE.md` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -195,23 +118,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/) - email@email_client.com
+Kevin Allioli - [@linit_io](https://twitter.com/linit_io) - kevin@linit.io
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/linitio/openstack-amazon-linux-2-image](https://github.com/linitio/openstack-amazon-linux-2-image)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
