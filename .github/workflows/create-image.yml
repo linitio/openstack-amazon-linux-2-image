@@ -69,10 +69,10 @@ jobs:
           asset_path: amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
           asset_name: amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
           asset_content_type: application/octet-stream
-       env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       with:
-         upload_url: ${{ steps.create_release.outputs.upload_url }}
-         asset_path: md5.txt
-         asset_name: md5.txt
-         asset_content_type: text/plain
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: md5.txt
+          asset_name: md5.txt
+          asset_content_type: text/plain
