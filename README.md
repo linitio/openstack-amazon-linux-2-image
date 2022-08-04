@@ -50,7 +50,7 @@ To get a local copy up and running follow these simple example steps.
 ### How to use this image
 
 1. Set your OpenStack environment variables
-2. Download the latest image from release page
+2. Download the latest image from [release page](https://github.com/linitio/openstack-amazon-linux-2-image/releases "Release page")
 3. Upload image to your OpenStack environment
    ```sh
    openstack image create --disk-format=qcow2 --container-format=bare --min-disk 25 --file amzn2-kvm-2.0.20220606.1-x86_64.xfs.gpt.qcow2  'Amazon Linux 2'
