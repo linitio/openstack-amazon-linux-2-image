@@ -12,14 +12,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/linitio/openstack-amazon-linux-2-image">
     <img src="images/logo.png" alt="Logo" width="105" height="150">
   </a>
 
 <h3 align="center">Amazon Linux 2 image for OpenStack</h3>
 
   <p align="center">
-    Simple port of Amazon Linux 2 AMI for OpenStack environements
+    Simple port of Amazon Linux 2 AMI for OpenStack environments
     <br />
     <a href="https://github.com/linitio/openstack-amazon-linux-2-image"><strong>Explore the docs »</strong></a>
     <br />
@@ -49,7 +49,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### How to use this image
 
-1. Set your OpenStack environement variables
+1. Set your OpenStack environment variables
 2. Download the latest image from release page
 3. Upload image to your OpenStack environment
    ```sh
