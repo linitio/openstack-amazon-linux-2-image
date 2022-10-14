@@ -36,7 +36,7 @@
 This project is a simple port of Amazon Linux 2 AMI from Amazon Web Services  for OpenStack environments.  
 This image is strictly the same that the original, the only change has been made is adding OpenStack datasource for cloud-init.  
 
-This image is updated when AWS released a new version on their public repository [here](https://cdn.amazonlinux.com/os-images/latest/ "AWZ Images Repository").
+This image is updated when AWS released a new version on their public repository [here](https://cdn.amazonlinux.com/os-images/latest/ "AWS Images Repository").
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
