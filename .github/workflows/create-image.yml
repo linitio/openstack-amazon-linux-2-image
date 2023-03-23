@@ -31,7 +31,7 @@ jobs:
       - name: Install prerequies
         run: |
           sudo apt-get update
-          sudo apt install -f libguestfs-tools binfmt-support coreutils cryptsetup-bin e2fsprogs lvm2 mount parted qemu-user-static qemu-utils wget lsb-release ucommon-utils
+          sudo apt install -y libguestfs-tools binfmt-support coreutils cryptsetup-bin e2fsprogs lvm2 mount parted qemu-user-static qemu-utils wget lsb-release ucommon-utils
       # Runs a set of commands using the runners shell
       - name: Download base image from AWS
         run: |
