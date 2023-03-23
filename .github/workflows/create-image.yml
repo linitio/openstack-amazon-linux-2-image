@@ -55,10 +55,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Amazon Linux 2 version ${{ env.VERSION }}
+          name: Amazon Linux 2 version ${{ env.VERSION }}
           draft: false
           prerelease: false
-          image: ubuntu:22.04
 
       - name: Upload image to release asset
         id: upload-release-asset 
