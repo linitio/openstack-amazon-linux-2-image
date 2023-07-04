@@ -31,7 +31,7 @@ jobs:
       - name: Install prerequies
         run: |
           sudo dnf update -y
-	  sudo dnf install -y libguestfs-tools libguestfs-tools-c wget
+          sudo dnf install -y libguestfs-tools libguestfs-tools-c wget
       # Runs a set of commands using the runners shell
       - name: Download base image from AWS
         run: |
