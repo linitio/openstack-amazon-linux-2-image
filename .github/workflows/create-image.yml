@@ -4,6 +4,8 @@ name: CI
 
 env:
   VERSION: ${{ github.ref_name }}
+  OS_URL: wget https://cdn.amazonlinux.com/os-images/${{ env.VERSION }}/kvm/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+  BASE_OS_IMAGE: base-os.qcow2
 
 # Controls when the workflow will run
 on:
@@ -35,13 +37,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Download base image from AWS
         run: |
-         sudo wget https://cdn.amazonlinux.com/os-images/${{ env.VERSION }}/kvm/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         sudo wget "$OS_URL" -O $BASE_OS_IMAGE
       - name: Making some changes on base image
         run: |
-         sudo virt-copy-in -a amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 config/cloud.cfg /etc/cloud/
+         sudo virt-copy-in -a $BASE_OS_IMAGE config/cloud.cfg /etc/cloud/
       - name: Sparsify image
         run: |
-         sudo virt-sparsify --compress amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         sudo virt-sysprep -a $BASE_OS_IMAGE
+         sudo virt-sparsify --compress $BASE_OS_IMAGE amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          sudo md5sum amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > md5.txt
       - name: Create Release
         id: create_release
