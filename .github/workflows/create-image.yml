@@ -4,7 +4,7 @@ name: CI
 
 env:
   VERSION: ${{ github.ref_name }}
-  OS_URL: wget https://cdn.amazonlinux.com/os-images/${{ env.VERSION }}/kvm/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+  OS_URL: https://cdn.amazonlinux.com/os-images/$VERSION/kvm/amzn2-kvm-$VERSION-x86_64.xfs.gpt.qcow2
   BASE_OS_IMAGE: base-os.qcow2
 
 # Controls when the workflow will run
