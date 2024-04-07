@@ -5,6 +5,11 @@ name: CI
 env:
   VERSION: ${{ github.ref_name }}
   BASE_OS_IMAGE: base-os.qcow2
+  S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
+  ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  S3_ALIAS: ${{ secrets.S3_ALIAS }}
+  S3_BUCKET: ${{ vars.S3_BUCKET }}
 
 # Controls when the workflow will run
 on:
@@ -45,34 +50,11 @@ jobs:
          sudo virt-sysprep -a $BASE_OS_IMAGE
          sudo virt-sparsify --compress $BASE_OS_IMAGE amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          sudo md5sum amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > md5.txt
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          name: Amazon Linux 2 version ${{ env.VERSION }}
-          draft: false
-          prerelease: false
-
-      - name: Upload image to release asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
-          asset_name: amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
-          asset_content_type: application/octet-stream
-
-      - name: Add md5.txt file
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: md5.txt
-          asset_name: md5.txt
-          asset_content_type: text/plain
+      - name: Uploading image in object storage
+        run: |
+         echo "Uploading image in object storage"
+         mc alias set ${{ env.S3_ALIAS }} ${{ env.S3_ENDPOINT }} ${{ env.ACCESS_KEY }} ${{ env.SECRET_KEY }}
+         mc cp amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         mc cp md5.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/md5.txt
+         mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/iamzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
+         mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/md5.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/md5.txt
