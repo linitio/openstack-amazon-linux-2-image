@@ -51,7 +51,7 @@ jobs:
          sudo virt-sparsify --compress $BASE_OS_IMAGE amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          sudo md5sum amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > md5.txt
          sudo sha1sum -b amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > sha1.txt
-	 sudo sha256sum -b amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > sha256.txt
+         sudo sha256sum -b amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 > sha256.txt
       - name: Uploading image in object storage
         run: |
          echo "Uploading image in object storage"
