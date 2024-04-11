@@ -58,9 +58,9 @@ jobs:
          mc alias set ${{ env.S3_ALIAS }} ${{ env.S3_ENDPOINT }} ${{ env.ACCESS_KEY }} ${{ env.SECRET_KEY }}
          mc cp amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          mc cp md5.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/md5.txt
-	 mc cp sha1.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha1.txt
-	 mc cp sha256.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha256.txt
+         mc cp sha1.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha1.txt
+         mc cp sha256.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha256.txt
          mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2 ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/amzn2-kvm-${{ env.VERSION }}-x86_64.xfs.gpt.qcow2
          mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/md5.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/md5.txt
          mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha1.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/sha1.txt
-	 mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha256.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/sha256.txt
+         mc cp ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/latest/sha256.txt ${{ env.S3_ALIAS }}/${{ env.S3_BUCKET }}/${{ env.VERSION }}/sha256.txt
