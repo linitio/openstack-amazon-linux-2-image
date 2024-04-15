@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/linitio/openstack-amazon-linux-2-image">
-    <img src="images/logo.png" alt="Logo" width="105" height="150">
+    <img src="images/logo.png" alt="Logo" width="150" height="150">
   </a>
 
 <h3 align="center">Amazon Linux 2 image for OpenStack</h3>
